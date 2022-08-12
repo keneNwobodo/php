@@ -1,4 +1,4 @@
-<?Php
+<?php
 
 # function
  echo "Hello, World";
@@ -52,6 +52,4 @@
 
  $friend_call = "sayHello";
  $friend_call();
-
- #cookie
-?>
+ ?>
