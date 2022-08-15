@@ -20,8 +20,4 @@ echo $null_val;
 # strings
 $my_name = "Kenechukwu";
 echo $my_name;
-
-
-
-
 ?>
