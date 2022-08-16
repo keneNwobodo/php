@@ -60,8 +60,6 @@
       }
       $mysqli->close();
 
-      // creating database
-
     ?>
 </body>
 </html>

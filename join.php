@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+      $dbhost = "localhost";
+      $dbuser = "root";
+      $dbpass = "Kene10";
+      $dname = "WORLD";
+
+      // connecting to MySQL 
+      $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dname);
+
+      if($mysqli->connect_errno) {
+        printf("Connect failed: %s<br />", $mysqli->connect_error);
+        exit();
+      }
+      printf("Connected successfully.<br />");
+    
+
+    //    create TABLE tcount_tbl(
+    //     sales_author VARCHAR(40) NOT NULL,
+    //     sales_count int
+    //    )
+
+      // update a record
+      if($mysqli->query("SELECT a.sales_id, a.sales_author, b.sun_title FROM sales_tbl a, sun_tbl b WHERE a.sales_author = b.sun_author")) {
+        printf("JOINED SUCCESSFULLY UPDATED!");
+      }
+
+      if($mysqli->errno) {
+        printf("JOINED WAS NOT SUCCESSFULLY");
+      }
+      // select the fields belws from the sales table
+      $sql = "SELECT sales_id, sales_title, sales_author, submission_date from sales_tbl";
+
+      $result = $mysqli->query($sql);   
+
+      if($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            printf("Id: %s, Title: %s, Author: %s, Date: %d <br />",
+            $row["sales_id"],
+            $row["sales_title"],
+            $row["sales_author"],
+            $row["submission_date"]);
+        } 
+      } else {
+        printf("No record found!");
+      }
+
+      mysqli_free_result($result);
+      $mysqli->close();
+    ?>
+
+</body>
+</html>
